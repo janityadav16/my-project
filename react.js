@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-function form() {
-    const [formData, setformData] = useState({
+const Form = () => {
+    const [formData, setFormData] = useState({
         firstname: '',
         lastname: '',
         contactNumber: '',
@@ -10,7 +10,7 @@ function form() {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setformData({
+        setFormData({
             ...formData,
             [name]: value
         });
@@ -66,6 +66,6 @@ function form() {
             <button type="submit">Submit</button>
         </form>
     );
-}
+};
 
-export default form;
+export default Form;
