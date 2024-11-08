@@ -8,12 +8,8 @@ const Form = () => {
         email: ''
     });
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
+    const handleChange = ({ target: { name, value } }) => {
+        setFormData((prevState) => ({ ...prevState, [name]: value }));
     };
 
     const handleSubmit = (e) => {
@@ -23,49 +19,26 @@ const Form = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <label>First Name:</label>
-                <input
-                    type="text"
-                    name="firstname"
-                    value={formData.firstname}
-                    onChange={handleChange}
-                    required
-                />
-            </div>
-            <div>
-                <label>Last Name:</label>
-                <input
-                    type="text"
-                    name="lastname"
-                    value={formData.lastname}
-                    onChange={handleChange}
-                    required
-                />
-            </div>
-            <div>
-                <label>Contact Number:</label>
-                <input
-                    type="tel"
-                    name="contactNumber"
-                    value={formData.contactNumber}
-                    onChange={handleChange}
-                    required
-                />
-            </div>
-            <div>
-                <label>Email:</label>
-                <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                />
-            </div>
+            <label>
+                First Name:
+                <input type="text" name="firstname" value={formData.firstname} onChange={handleChange} required />
+            </label>
+            <label>
+                Last Name:
+                <input type="text" name="lastname" value={formData.lastname} onChange={handleChange} required />
+            </label>
+            <label>
+                Contact Number:
+                <input type="tel" name="contactNumber" value={formData.contactNumber} onChange={handleChange} required />
+            </label>
+            <label>
+                Email:
+                <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+            </label>
             <button type="submit">Submit</button>
         </form>
     );
 };
 
 export default Form;
+
